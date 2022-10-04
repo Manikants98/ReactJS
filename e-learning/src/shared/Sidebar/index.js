@@ -10,7 +10,7 @@ const Sidebar = ({ open, setOpen, setSelected }) => {
     <div className="flex">
       <div
         className={classNames(
-          " flex flex-col shadow-gray-400 shadow-sm ",
+          "flex flex-col shadow-gray-400 shadow-card",
           open ? "w-40" : "w-[45px]"
         )}
       >
@@ -19,7 +19,7 @@ const Sidebar = ({ open, setOpen, setSelected }) => {
             className={classNames(
               "flex p-2 border-b-2 cursor-pointer",
               window.location.pathname === item.to
-                ? "bg-primary text-white"
+                ? "bg-primary shadow-card text-white"
                 : "bg-white text-primary"
             )}
             key={item.id}
@@ -32,7 +32,10 @@ const Sidebar = ({ open, setOpen, setSelected }) => {
             {open && <span className="ml-2"> {item.item} </span>}
           </Link>
         ))}
-        <button onClick={() => setOpen(!open)} className="flex text-primary p-2.5 ">
+        <button
+          onClick={() => setOpen(!open)}
+          className="flex text-primary p-2.5 "
+        >
           {open ? <ArrowBackIosNewIcon /> : <ArrowForwardIosIcon />}
         </button>
       </div>

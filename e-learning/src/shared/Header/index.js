@@ -1,75 +1,34 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Modal from "@mui/material/Modal";
-import Box from "@mui/material/Box";
-import Register from "../../components/Register";
-import { Button, TextField } from "@mui/material";
-import LogIn from "../../components/LogIn";
-import classNames from "classnames";
+import { CustomButton } from "../CustomButton";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-  const [signIn, setSignIn] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center sticky bg-white top-0 shadow-theme-border shadow-sm z-50">
+      <div className="flex flex-row justify-between p-2 items-center sticky shadow-card bg-white top-0 z-50">
         <Link
-          className="flex text-sm sm:text-3xl sticky items-center  text-primary p-2 font-bold"
+          className="flex text-2xl lg:text-4xl items-center text-primary pr-2  font-bold"
           to="/home"
         >
-          edu-tech-villa
+          eduVilla
         </Link>
-        <div className="flex items-baseline">
-          <TextField
-            className="!rounded-full"
+        <div className="flex items-center">
+          <input
+            className="outline-primary p-1 lg:w-64 w-40 border-blue-300 border-2 hover:border-secondary rounded-full pl-3"
             type="text"
-            placeholder=" Search"
+            placeholder="Search"
             size="small"
           />
 
-          <div className="flex justify-center items-center content-center flex-row">
-            <Button
-              className="!m-3 !bg-primary !pr-5 !rounded-full !capitalize"
-              variant="contained"
-              onClick={handleOpen}
-            >
-              Register/Login
-            </Button>
-          </div>
-
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="modal-modal-title"
-            aria-describedby="modal-modal-description"
+          <CustomButton
+            className="!rounded-full !text-xs !lg:w-64 !w-24 !border-2 !border-primary !p-2"
+            onClick={() => navigate("/register")}
           >
-            <Box className="absolute top-1/2 left-1/2 shadow-md -translate-x-1/2 -translate-y-1/2 w-1/2 outline-none ">
-              <div className="flex flex-row bg-white space text-center">
-                <h1
-                  className={classNames(
-                    "cursor-pointer h-full p-3 text-2xl w-full",
-                    !signIn && "bg-gray-200"
-                  )}
-                  onClick={() => setSignIn(false)}
-                >
-                  Register
-                </h1>
-                <h1
-                  className={classNames(
-                    "cursor-pointer text-2xl p-3 h-full w-full",
-                    signIn && "bg-gray-200 "
-                  )}
-                  onClick={() => setSignIn(true)}
-                >
-                  LogIn
-                </h1>
-              </div>
-              {signIn ? <LogIn /> : <Register setSignIn={setSignIn} />}
-            </Box>
-          </Modal>
+            Register/Login
+          </CustomButton>
         </div>
       </div>
     </>

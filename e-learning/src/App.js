@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
-import Contact from "./pages/ContactUs";
+import Users from "./pages/Users";
 import OurServices from "./pages/OurServices";
 import Portfolio from "./pages/Portfolio";
 import Home from "./pages/Home";
 import React from "react";
 import Layout from "./layout";
 import Courses from "./pages/Cources";
+import Register from "./components/Register";
+import LogIn from "./components/LogIn";
+import Profile from "./pages/Profile";
+import CreateCourse from "./pages/Cources/CreateCourse";
 
 function App() {
   return (
@@ -17,11 +21,23 @@ function App() {
             <Route exact path="/" element={<Layout component={<Home />} />} />
             <Route path="/home" element={<Layout component={<Home />} />} />
             <Route path="/about" element={<Layout component={<About />} />} />
-            <Route path="/courses" element={<Layout component={<Courses />} />} />
 
             <Route
-              path="/contact"
-              element={<Layout component={<Contact />} />}
+              path="/courses"
+              element={<Layout component={<Courses />} />}
+            />
+            <Route
+              path="/create-course"
+              element={<Layout component={<CreateCourse />} />}
+            />
+
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<LogIn />} />
+
+            <Route path="/users" element={<Layout component={<Users />} />} />
+            <Route
+              path="/profile"
+              element={<Layout component={<Profile />} />}
             />
             <Route
               path="/portfolio"
@@ -32,14 +48,9 @@ function App() {
               path="/ourservices"
               element={<Layout component={<OurServices />} />}
             />
-             <Route
-              path="/courses"
-              element={<Layout component={<Courses/>} />}
-            />
           </Routes>
         </React.StrictMode>
       </BrowserRouter>
-      
     </>
   );
 }

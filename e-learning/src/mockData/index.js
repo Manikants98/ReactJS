@@ -1,37 +1,44 @@
 import InfoIcon from "@mui/icons-material/Info";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-import HomeIcon from "@mui/icons-material/Home";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AutoAwesomeMotionIcon from "@mui/icons-material/AutoAwesomeMotion";
+import PeopleIcon from "@mui/icons-material/People";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 
 export const navItems = [
   {
     id: 0,
-    item: " Home",
-    icon: <HomeIcon />,
+    item: "Home",
+    icon: <HomeRoundedIcon />,
     to: "/home",
   },
   {
     id: 1,
-    item: "Courses",
-    icon: <MiscellaneousServicesIcon />,
-    to: "/courses",
+    item: "Profile",
+    icon: <AccountCircleIcon />,
+    to: "/profile",
   },
   {
     id: 2,
-    item: " Portfolio",
+    item: "Courses",
     icon: <AutoAwesomeMotionIcon />,
-    to: "/portfolio",
+    to: "/courses",
   },
   {
     id: 3,
-    item: " Contact Us",
-    icon: <AlternateEmailIcon />,
-    to: "/contact",
+    item: "Our Services",
+    icon: <MiscellaneousServicesIcon />,
+    to: "/portfolio",
   },
   {
     id: 4,
-    item: " About Us",
+    item: "Users",
+    icon: <PeopleIcon />,
+    to: "/users",
+  },
+  {
+    id: 5,
+    item: "About Us",
     icon: <InfoIcon />,
     to: "/about",
   },
@@ -80,23 +87,83 @@ export const loginFormData = [
 ];
 
 export const courseData = [
-  
   {
     id: "heading",
     name: "heading",
     placeholder: "Course Name",
-    type: "text"
+    type: "text",
   },
   {
     id: "category",
     name: "category",
     placeholder: "Cource Category",
-    type: "text"
+    type: "text",
   },
   {
     id: "description",
     name: "description",
     placeholder: "Course Description",
-    type: "text"
+    type: "text",
+  },
+];
+
+export const profileData1 = [
+  {
+    defaultValue: "Mani Kant Sharma",
+    id: "name",
+    name: "name",
+    placeholder: "Name",
+  },
+  {
+    defaultValue: "mani@gmail.com",
+    id: "email",
+    name: "email",
+    placeholder: "Email",
+  },
+];
+
+export const profileData2 = [
+  {
+    defaultValue: "Lucknow",
+    id: "city",
+    name: "city",
+    placeholder: "City",
+  },
+  {
+    defaultValue: "227105",
+    id: "zipcode",
+    name: "zipcode",
+    placeholder: "Zipcode",
+  },
+  {
+    defaultValue: "India",
+    id: "country",
+    name: "country",
+    placeholder: "Country",
+  },
+  {
+    defaultValue: "1234567890",
+    id: "contact",
+    name: "contact",
+    placeholder: "Contact Number",
+  },
+];
+
+export const homeData = [
+  {
+    heading: "Newly Launched",
+    start: 0,
+    end : 3
+  },
+  {
+    heading: "Mostly Viewed",
+    start: 1,
+    end : 4
+  },
+  {
+    heading: "Trending Cources",
+    start: 3,
+    end : 5
+    
   },
 ];

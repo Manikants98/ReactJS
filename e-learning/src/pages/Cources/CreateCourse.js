@@ -13,6 +13,7 @@ import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "react-query";
+import { CustomButton } from "../../shared/CustomButton";
 const initialValues = {
   heading: "",
   category: "",
@@ -23,7 +24,10 @@ const initialValues = {
 const CreateCourse = () => {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState(null);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    setImage(null);
+  };
   const handleClose = () => setOpen(false);
   const client = useQueryClient();
   const { isLoading, mutate } = useMutation(createCourseFn, {
@@ -68,19 +72,7 @@ const CreateCourse = () => {
   ) : (
     <>
       <div className="border-b-2 justify-between w-full content-between ">
-        <button
-          variant="outlined"
-          className="m-2 border-gray-200 border-2 rounded p-1 items-center text-gray-400"
-          size="small"
-          onClick={handleOpen}
-        >
-          Create Course
-        </button>
-        <input
-          className="m-2 border-gray-200 border-2 rounded p-1"
-          type="text"
-          placeholder="Search"
-        />
+        <CustomButton onClick={handleOpen}>Create Course</CustomButton>
       </div>
 
       <Modal
@@ -99,7 +91,11 @@ const CreateCourse = () => {
               <hr className="w-full" />
               {image ? (
                 <>
-                  <img src={image} className="w-1/2 h-24 object-contain mb-3" />
+                  <img
+                    src={image}
+                    alt=" "
+                    className="w-1/2 h-24 object-contain mb-3"
+                  />
                   <p
                     className="cursor-pointer text-xs text-red-500"
                     onClick={() => setImage(null)}
@@ -110,10 +106,10 @@ const CreateCourse = () => {
               ) : (
                 <Button
                   variant="outlined"
-                  className="!m-2 !capitalize w-1/2 !border-gray-200 !border-2 !text-gray-500"
+                  className="!m-2 !capitalize w-1/2 !border-primary !py-3 !border-dashed !text-primary"
                   component="label"
                 >
-                  Upload Course Thumbnail
+                  Upload Image
                   <input
                     hidden
                     onChange={handleChange}
@@ -137,14 +133,14 @@ const CreateCourse = () => {
                 />
               ))}
 
-              <Button
+              <CustomButton
                 variant="outlined"
-                className="!m-2 !capitalize !border-gray-200 !border-2 !text-gray-400"
                 size="small"
                 type="submit"
+                className="w-1/2 !m-4"
               >
                 Create Coursce
-              </Button>
+              </CustomButton>
             </form>
           </div>
         </Box>

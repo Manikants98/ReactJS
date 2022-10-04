@@ -3,8 +3,8 @@ import React from "react";
 const Portfolio = () => {
   return (
     <>
-      <div className="bg-fuchsia-500 text-center rounded-md">
-        <div className="rounded-lg  shadow-md p-2">
+      <div className="grid grid-cols-1 bg-secondary m-5 text-center ">
+        <div className="rounded-lg shadow-md p-2">
           <h1>Portfolio</h1>
           <p>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.

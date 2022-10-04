@@ -3,6 +3,7 @@ export const API_URLS = {
   login : "./login",
   createCourse : "/create-course",
   getCourses : "/courses",
-  users : "/users"
+  users : "/users",
+  home : "/home"
 };
 

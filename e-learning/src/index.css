@@ -17,7 +17,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 7px;
 }
 
 /* Track */
@@ -27,10 +27,36 @@ code {
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #7C3AED; 
+  background: #1A73E8; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED; 
+  background: #1A73E8; 
 }
+
+.card {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+/* <div
+className="!m-2 w-1/2  border-2 border-dashed p-5 text-primary border-primary"
+onClick={() => console.log("")}
+>
+Add Image
+<input
+  hidden
+  onChange={handleChange}
+  value={formik.image_url}
+  formik={formik}
+  name="image_url"
+  id="image_url"
+  accept="image/*"
+  type="file"
+/>
+</div> */

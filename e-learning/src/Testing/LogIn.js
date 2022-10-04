@@ -1,33 +1,38 @@
 import React from "react";
-import Button from "@mui/material/Button";
 import { useFormik } from "formik";
-import { signUpSchema } from "../schemas";
-import { registerFormData } from "../mockData";
-import { CustomTextField } from "../shared/CustomTextField";
+import { logInSchema } from "../schemas";
+import { loginFormData } from "../mockData";
+import { LogInTextField } from "../shared/CustomTextField";
+import { useNavigate } from "react-router-dom";
+// import Home from "../pages/Home";
+import { loginFn } from "../services/Login";
 import { useMutation } from "react-query";
-import { registerFn } from "../services/Register";
 import { Loader } from "../shared/Loader";
+import { CustomButton } from "../shared/CustomButton";
+
 const initialValues = {
   name: "",
   email: "",
   password: "",
-  confirm_password: "",
 };
 
-const SignUp = ({ setSignIn }) => {
-  const { isLoading, mutate } = useMutation(registerFn);
+const LogIn = (setLogin) => {
+  const { isLoading, mutate } = useMutation(loginFn);
 
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: signUpSchema,
-    onSubmit: (values, action) => {
+    validationSchema: logInSchema,
+    onSubmit: async (values, action) => {
       const reqBody = {
-        name: values.name,
         email: values.email,
         password: values.password,
       };
       mutate(reqBody);
-      // setSignIn(true);
+      action.resetForm();
+      setLogin(true);
+      navigate("/home");
+      alert("Login Succefully");
     },
   });
 
@@ -40,8 +45,8 @@ const SignUp = ({ setSignIn }) => {
           onSubmit={formik.handleSubmit}
           className="flex flex-col bg-white border-2 justify-center items-center p-5 shadow-md"
         >
-          {registerFormData.map((data) => (
-            <CustomTextField
+          {loginFormData.map((data) => (
+            <LogInTextField
               label={data.label}
               type={data.type}
               name={data.name}
@@ -50,18 +55,18 @@ const SignUp = ({ setSignIn }) => {
             />
           ))}
 
-          <Button
+          <CustomButton
             type="submit"
             variant="contained"
             disabled={formik.isValid ? false : true}
             className="w-1/2 !m-4"
           >
-            Register
-          </Button>
+            Log In
+          </CustomButton>
         </form>
       )}
     </>
   );
 };
 
-export default SignUp;
+export default LogIn;

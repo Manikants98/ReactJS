@@ -5,7 +5,7 @@ export const CustomTextField = ({ label, type, name, id, formik }) => {
   return (
     <>
       <TextField
-        className="w-1/2 !m-3"
+        className="w-1/2 h-12 !m-3"
         label={label}
         type={type}
         name={name}
@@ -26,7 +26,7 @@ export const LogInTextField = ({ label, type, name, id, formik }) => {
   return (
     <>
       <TextField
-        className="w-1/2 !m-3"
+        className="w-1/2 h-12 !m-3"
         label={label}
         type={type}
         name={name}
@@ -43,11 +43,17 @@ export const LogInTextField = ({ label, type, name, id, formik }) => {
   );
 };
 
-export const CreateCourseTextField = ({placeholder, type, name, id, formik }) => {
+export const CreateCourseTextField = ({
+  placeholder,
+  type,
+  name,
+  id,
+  formik,
+}) => {
   return (
     <>
       <TextField
-        className="!m-2 !border-2 !w-1/2 !rounded !outline-none"
+        className="!m-2 !rounded"
         placeholder={placeholder}
         type={type}
         name={name}
@@ -60,6 +66,23 @@ export const CreateCourseTextField = ({placeholder, type, name, id, formik }) =>
         onBlur={formik.handleBlur}
         error={formik.errors[id] && formik.touched[id] ? true : false}
         helperText={formik.touched[id] && formik.errors[id]}
+      />
+    </>
+  );
+};
+
+export const ProfileTextField = ({ placeholder, name, id, defaultValue }) => {
+  return (
+    <>
+      <TextField
+        className="!m-2"
+        defaultValue={defaultValue}
+        variant="standard"
+        placeholder={placeholder}
+        name={name}
+        id={id}
+        type="text"
+        onChange={""}
       />
     </>
   );

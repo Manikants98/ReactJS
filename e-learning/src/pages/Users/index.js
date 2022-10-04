@@ -2,30 +2,30 @@ import React from "react";
 import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { users } from "../../services/Users";
-import { Loader } from "../Loader";
+import { CustomButton } from "../../shared/CustomButton";
+import { Loader } from "../../shared/Loader";
 
 const Users = () => {
   const { isLoading, mutate, data } = useMutation(users);
-
   useEffect(() => {
     mutate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(data);
-
   return (
     <>
       {isLoading ? (
         <Loader />
       ) : (
         <>
-          <h1> Registered Users</h1>
-          <div className="grid grid-cols-5 gap-2">
+          <h1 className="text-center text-2xl font-bold m-5">Registered Users</h1>
+          <hr />
+          <div className="justify-center text-center lg:grid-cols-4 md:grid-cols-2 p-6 grid lg:gap-5">
             {data &&
               data.data &&
               data.data.map((item) => {
                 return (
                   <>
-                    <div className=" flex flex-col items-center rounded border-violet-200 border-2 m-2 p-2 justify-center ">
+                    <div className="card flex flex-col items-center rounded m-2 p-2 justify-center ">
                       <img
                         className="rounded-full w-9/12 border "
                         src="https://firebasestorage.googleapis.com/v0/b/testing-mkx.appspot.com/o/Screenshot.png?alt=media&token=6d6a99db-28ca-45ec-b03a-18e1e4b1cf26"
@@ -33,6 +33,7 @@ const Users = () => {
                       />
                       <h1>Name : {item.name} </h1>
                       <h1>Email : {item.email} </h1>
+                      <CustomButton>Contact</CustomButton>
                     </div>
                   </>
                 );
